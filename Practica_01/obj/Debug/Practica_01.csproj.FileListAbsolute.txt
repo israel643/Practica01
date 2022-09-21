@@ -1,0 +1,10 @@
+C:\Practicas_Isra\Practica_01\Practica_01\bin\Debug\Practica_01.exe.config
+C:\Practicas_Isra\Practica_01\Practica_01\bin\Debug\Practica_01.exe
+C:\Practicas_Isra\Practica_01\Practica_01\bin\Debug\Practica_01.pdb
+C:\Practicas_Isra\Practica_01\Practica_01\obj\Debug\Practica_01.csproj.AssemblyReference.cache
+C:\Practicas_Isra\Practica_01\Practica_01\obj\Debug\Practica_01.Form1.resources
+C:\Practicas_Isra\Practica_01\Practica_01\obj\Debug\Practica_01.Properties.Resources.resources
+C:\Practicas_Isra\Practica_01\Practica_01\obj\Debug\Practica_01.csproj.GenerateResource.cache
+C:\Practicas_Isra\Practica_01\Practica_01\obj\Debug\Practica_01.csproj.CoreCompileInputs.cache
+C:\Practicas_Isra\Practica_01\Practica_01\obj\Debug\Practica_01.exe
+C:\Practicas_Isra\Practica_01\Practica_01\obj\Debug\Practica_01.pdb

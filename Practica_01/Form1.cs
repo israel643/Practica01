@@ -66,7 +66,7 @@ namespace Practica_01
             pivote = array[central];
             i = inicio;
             j = final;
-            do
+            /*do
             {
                 while (array[i] < pivote) i++;
                 while (array[j] > pivote) j--;
@@ -79,7 +79,24 @@ namespace Practica_01
                     i++;
                     j--;
                 }
-            } while (i <= j);
+            } while (i <= j);*/
+            for(int x = 0; x < array.Length; x++)
+            {
+                if(array[i] < pivote) { i++; }
+            }
+            for(int y = 0; y < array.Length; y++)
+            {
+                if (array[j] > pivote) { j--;}
+            }
+            if (i <= j)
+            {
+                int temp;
+                temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+                i++;
+                j--;
+            }
 
             if (inicio < j)
             {
@@ -91,7 +108,7 @@ namespace Practica_01
             }
         }
     
-                    /*                       Buttons                 */
+          /*                       Buttons                 */
         private void button1_Click(object sender, EventArgs e)
         {
             numbers();

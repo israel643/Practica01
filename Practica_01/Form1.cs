@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+
 
 namespace Practica_01
 {
@@ -27,6 +29,8 @@ namespace Practica_01
         //DataSet
         DataSet ds = new DataSet();
         string conexion = @"C:\Isra\Practica_01\XML\datos.xml";
+        List<Import> SAT = new List<Import>();
+        
         public void load()
         {
             ds.ReadXml(conexion);

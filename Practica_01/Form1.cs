@@ -60,20 +60,37 @@ namespace Practica_01
         
         public void Quick(int[] array, int inicio, int final)
         {
-            /*
-            int x, y, centro;
-            int pivote;
-            centro = (inicio + final)/2;
-            x = inicio;
-            y = final;
-
+            int i, j, central;
+            double pivote;
+            central = (inicio + final) / 2;
+            pivote = array[central];
+            i = inicio;
+            j = final;
             do
             {
-                while()
-            }
-            */
-        }
+                while (array[i] < pivote) i++;
+                while (array[j] > pivote) j--;
+                if (i <= j)
+                {
+                    int temp;
+                    temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                    i++;
+                    j--;
+                }
+            } while (i <= j);
 
+            if (inicio < j)
+            {
+                Quick(array, inicio, j);
+            }
+            if (i < final)
+            {
+                Quick(array, i, final);
+            }
+        }
+    
                     /*                       Buttons                 */
         private void button1_Click(object sender, EventArgs e)
         {
@@ -83,7 +100,12 @@ namespace Practica_01
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            int[] array = new int[]{ 21, 12, 1, 4, 75, 3, 2, 6 };
+            Quick(array, 0,array.Length-1);
+            for(int i =0; i < array.Length; i++)
+            {
+                listBox1.Items.Add(array[i]);
+            }
             
         }
 

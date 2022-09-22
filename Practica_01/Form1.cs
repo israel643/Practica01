@@ -19,17 +19,22 @@ namespace Practica_01
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            button1.Enabled = false;
+            button2.Enabled = false;
 
         }
 
         //DataSet
         DataSet ds = new DataSet();
+        string conexion = @"C:\Isra\Practica_01\XML\datos.xml";
         public void load()
         {
-            ds.ReadXml(@"D:\ASP\01\Practica_01\XML\datos.xml");
+            ds.ReadXml(conexion);
             MessageBox.Show("El XML se ha optenido con exito");
             dataGridView1.DataSource = ds.Tables[0];
             button3.Enabled = false;
+            button2.Enabled = true;
+            button1.Enabled = true;
         }
 
         int[] datos = new int[] {10,8,2,7,4,1,9,5,3,6 }; 
@@ -60,6 +65,7 @@ namespace Practica_01
         
         public void Quick(int[] array, int inicio, int final)
         {
+            listBox1.Items.Clear();
             int i, j, central;
             double pivote;
             central = (inicio + final) / 2;

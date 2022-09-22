@@ -19,3 +19,13 @@ D:\ASP\01\Practica_01\obj\Debug\Practica_01.csproj.GenerateResource.cache
 D:\ASP\01\Practica_01\obj\Debug\Practica_01.csproj.CoreCompileInputs.cache
 D:\ASP\01\Practica_01\obj\Debug\Practica_01.exe
 D:\ASP\01\Practica_01\obj\Debug\Practica_01.pdb
+C:\Isra\Practica_01\bin\Debug\Practica_01.exe.config
+C:\Isra\Practica_01\bin\Debug\Practica_01.exe
+C:\Isra\Practica_01\bin\Debug\Practica_01.pdb
+C:\Isra\Practica_01\obj\Debug\Practica_01.csproj.AssemblyReference.cache
+C:\Isra\Practica_01\obj\Debug\Practica_01.Form1.resources
+C:\Isra\Practica_01\obj\Debug\Practica_01.Properties.Resources.resources
+C:\Isra\Practica_01\obj\Debug\Practica_01.csproj.GenerateResource.cache
+C:\Isra\Practica_01\obj\Debug\Practica_01.csproj.CoreCompileInputs.cache
+C:\Isra\Practica_01\obj\Debug\Practica_01.exe
+C:\Isra\Practica_01\obj\Debug\Practica_01.pdb

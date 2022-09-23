@@ -21,31 +21,32 @@ namespace Practica_01
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            button1.Enabled = false;
-            button2.Enabled = false;
+            button5.Enabled = false;
+            button6.Enabled = false;
 
         }
 
-        //DataSet
-        DataSet ds = new DataSet();
-        string conexion = @"C:\Isra\Practica_01\XML\datos.xml";
+        //conexion
+        string conexion = @"D:\ASP\01\Practica_01\XML\datos.xml";
         List<Import> SAT = new List<Import>();
         
         public void load()
         {
+            DataSet ds = new DataSet();
             ds.ReadXml(conexion);
             MessageBox.Show("El XML se ha optenido con exito");
             dataGridView1.DataSource = ds.Tables[0];
             button3.Enabled = false;
-            button2.Enabled = true;
-            button1.Enabled = true;
+            button5.Enabled = true;
+            button6.Enabled = true;
         }
 
+        //Burbuja con datos numericos
         int[] datos = new int[] {10,8,2,7,4,1,9,5,3,6 }; 
         public void numbers()
         {
+            
             listBox1.Items.Clear();
-
             for (int i = 0; i < datos.Length; i++)
             {
                 for (int j = 0; j < datos.Length - 1; j++)
@@ -63,9 +64,10 @@ namespace Practica_01
             {
                 listBox1.Items.Add(datos[i]);
             }
+            
         }
 
-        //QuickSort
+        //QuickSort con datos numericos
         
         public void Quick(int[] array, int inicio, int final)
         {
@@ -117,8 +119,99 @@ namespace Practica_01
                 Quick(array, i, final);
             }
         }
-    
-          /*                       Buttons                 */
+
+        //Conversor de Tablas
+        static DataTable ConvertToTable(List<Import> list,int colums)
+        {
+            DataTable dt = new DataTable();
+            for(int i =0; i < colums; i++) {
+                dt.Columns.Add();
+            }
+            foreach(var item in list)
+            {
+                DataRow wRow = dt.NewRow();
+                wRow[0] = item.id;
+                dt.Rows.Add(wRow);
+            }
+            return dt;
+
+        }
+
+        //Conversor de listas 
+        static List<Import> Listas(DataSet d)
+        {
+            DataSet Datasorce = d;
+            List<Import> listItems = new List<Import>();
+            for (int i = 0; i < Datasorce.Tables[0].Rows.Count; i++)
+            {
+                Import item = new Import(
+                    Datasorce.Tables[0].Rows[i]["sat_unimed"].ToString()
+                );
+                listItems.Add(item);
+            };
+
+            return listItems;
+        }
+        static List<Import> BublelList(List<Import> list)
+        {
+            int Leng = 0;
+            List<Import> listb = list;
+            Leng = listb.Count;
+            for (int i = 1; i < Leng; i++)
+            {
+                for (int j = 0; j < (Leng - 1); j++)
+                {
+                    if (listb[j].id.CompareTo(listb[j + 1].id) > 0)
+                    {
+                        Import aux;
+                        aux = listb[j];
+                        listb[j] = listb[j + 1];
+                        listb[j + 1] = aux;
+                    }
+                }
+            }
+            return listb;
+        }
+
+        static List<Import> QuicksortsList(List<Import> quick, int inicio, int final)
+        {
+            int leng = 0;
+            List<Import> listq = quick;
+            leng = quick.Count;
+            int i, j, central;
+            Import pivote;
+            central = (inicio + final) / 2;
+            pivote = listq[central];
+            i = inicio;
+            j = final;
+
+            do
+            {
+                while (listq[i].id.CompareTo(pivote.id)>0) i++;
+                while (listq[j].id.CompareTo(pivote.id)<0) j--;
+                if (i <= j)
+                {
+                    Import temp;
+                    temp = listq[i];
+                    listq[i] = listq[j];
+                    listq[j] = temp;
+                    i++;
+                    j--;
+                }
+            } while (i <= j) ;
+            if (inicio < j)
+            {
+                QuicksortsList(listq, inicio, j);
+            }
+            if (i < final)
+            {
+                QuicksortsList(listq, i, final);
+            }
+            return listq;
+        }
+
+
+        /*                       Buttons                 */
         private void button1_Click(object sender, EventArgs e)
         {
             numbers();
@@ -145,6 +238,65 @@ namespace Practica_01
         private void button4_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dataGridView2.Columns.Clear();
+            button5.Enabled = false;
+            Thread nucleo = new Thread(
+                delegate (){
+                    DataSet ds = new DataSet();
+                    ds.ReadXml(conexion);
+                    List<Import> list = Listas(ds);
+                    List<Import> listburbuja = BublelList(list);   
+                    if (dataGridView2.InvokeRequired)
+                    {
+                        dataGridView2.Invoke(new MethodInvoker(delegate {
+                            DataTable TD = ConvertToTable(listburbuja, 1);
+                            dataGridView2.DataSource = TD;
+                            
+                        }));
+                    }
+                    if (button5.InvokeRequired)
+                    {
+                        button5.Invoke(new MethodInvoker(delegate
+                        {
+                            button5.Enabled = true;
+                        }));
+                        
+                    }
+                });
+            nucleo.Start();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dataGridView2.Columns.Clear();
+            button6.Enabled = false;
+            Thread core = new Thread(
+                delegate ()
+                {
+                    DataSet dataSet = new DataSet();
+                    dataSet.ReadXml(conexion);
+                    List<Import> list = Listas(dataSet);
+                    List<Import> Quick = QuicksortsList(list, 0, list.Count -1);
+                    if (dataGridView2.InvokeRequired)
+                    {
+                        dataGridView2.Invoke(new MethodInvoker(delegate {
+                            DataTable Table = ConvertToTable(Quick, 1);
+                            dataGridView2.DataSource=Table;
+                        }));
+                    }
+                    if (button6.InvokeRequired)
+                    {
+                        button6.Invoke(new MethodInvoker(delegate
+                        {
+                            button6.Enabled = true;
+                        }));
+                    }
+                }); 
+            core.Start();
         }
     }
 }

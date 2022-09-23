@@ -8,16 +8,11 @@ namespace Practica_01
 {
     class Import
     {
-        public string ID;
-        public string Description;
-        public string Elemeneto;
+        public string id;
 
-        public Import(string Id, string Descripcion, string Element)
+        public Import(string Id)
         {
-            this.ID = Id;
-            this.Description = Descripcion;
-            this.Elemeneto = Element;
-
+            this.id = Id;
         }
     }
 }

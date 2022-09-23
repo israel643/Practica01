@@ -244,6 +244,7 @@ namespace Practica_01
         {
             dataGridView2.Columns.Clear();
             button5.Enabled = false;
+            button6.Enabled = false;
             Thread nucleo = new Thread(
                 delegate (){
                     DataSet ds = new DataSet();
@@ -263,6 +264,7 @@ namespace Practica_01
                         button5.Invoke(new MethodInvoker(delegate
                         {
                             button5.Enabled = true;
+                            button6.Enabled = true;
                         }));
                         
                     }
@@ -273,6 +275,7 @@ namespace Practica_01
         private void button6_Click(object sender, EventArgs e)
         {
             dataGridView2.Columns.Clear();
+            button5.Enabled = false;
             button6.Enabled = false;
             Thread core = new Thread(
                 delegate ()
@@ -292,11 +295,17 @@ namespace Practica_01
                     {
                         button6.Invoke(new MethodInvoker(delegate
                         {
+                            button5.Enabled = true;
                             button6.Enabled = true;
                         }));
                     }
                 }); 
             core.Start();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
